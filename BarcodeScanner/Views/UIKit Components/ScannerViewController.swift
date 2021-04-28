@@ -99,7 +99,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             return
         }
         
-        captureSession.stopRunning()
+        
         scannerDelegate?.didFind(barcode: barcode)
     }
     

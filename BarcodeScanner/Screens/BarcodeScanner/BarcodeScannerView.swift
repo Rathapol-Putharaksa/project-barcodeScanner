@@ -5,15 +5,12 @@ import SwiftUI
 struct BarcodeScannerView: View {
     
     @StateObject var viewModel = BarcodeScannerViewModel()
-    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: BarcodeScannerView()) {
-                    Text("NEW SCAN")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        
-            }
+                
+               
                 ScannerView(scannedCode: $viewModel.scannedCode,
                             alertItem: $viewModel.alertItem)
                     .frame(maxHeight: 300)

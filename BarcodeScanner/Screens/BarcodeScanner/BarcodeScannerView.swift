@@ -3,14 +3,20 @@
 import SwiftUI
 
 struct BarcodeScannerView: View {
-    
+    @Environment(\.openURL) var openURL
     @StateObject var viewModel = BarcodeScannerViewModel()
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var fetch :ConnectJSON
+    
     var body: some View {
         NavigationView {
             VStack {
+                Text(viewModel.statusText)
+                    .bold()
+                    .font(.largeTitle)
+                    .foregroundColor(viewModel.statusTextColor)
+                    .padding()
                 
-               
                 ScannerView(scannedCode: $viewModel.scannedCode,
                             alertItem: $viewModel.alertItem)
                     .frame(maxHeight: 300)
@@ -19,20 +25,19 @@ struct BarcodeScannerView: View {
                     .frame(height: 60)
                 
                 
-                NavigationLink(destination: NutritionView(scannedCode: viewModel.scannedCode)) {
-                       Text("check Nutrition")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                   }
-                Text(viewModel.statusText)
-                    .bold()
-                    .font(.largeTitle)
-                    .foregroundColor(viewModel.statusTextColor)
-                    .padding()
+                NavigationLink(destination: NutritionView(scannedCode:viewModel.scannedCode)){
+                                    
+                                        Text("checkNutrition")
+                                    }
+                
+              
+                   
                 
                 
                 
                 
             }
+               
             
         
             

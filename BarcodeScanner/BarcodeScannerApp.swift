@@ -6,7 +6,8 @@ import SwiftUI
 struct BarcodeScannerApp: App {
     var body: some Scene {
         WindowGroup {
-            BarcodeScannerView()
+            FirstPage()
+                .environmentObject(ConnectJSON.init())
         }
     }
 }

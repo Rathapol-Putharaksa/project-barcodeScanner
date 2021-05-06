@@ -13,4 +13,5 @@ final class BarcodeScannerViewModel: ObservableObject {
         return scannedCode.isEmpty ? .red : .green
     }
     
+    
 }

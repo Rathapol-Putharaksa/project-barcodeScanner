@@ -1,4 +1,4 @@
-# Barcode Scanner
-📱 Simple barcode scanner written on SwiftUI.
+# member <br>
 
-Currently, it's able to scan EAN-8 and EAN-13 barcode types.
+นายภัควัฒน์ อิสระวิศาลพล 6110613046<br>
+นายรัฐพล พุทธรักษา 6110613129<br>

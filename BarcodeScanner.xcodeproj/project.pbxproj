@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5588F691264BDDA700E399AB /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588F68D264BDDA700E399AB /* ImageCache.swift */; };
+		5588F692264BDDA700E399AB /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588F68E264BDDA700E399AB /* EnvironmentValues+ImageCache.swift */; };
+		5588F693264BDDA700E399AB /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588F68F264BDDA700E399AB /* AsyncImage.swift */; };
+		5588F694264BDDA700E399AB /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588F690264BDDA700E399AB /* ImageLoader.swift */; };
+		5588F7A3264C0E3700E399AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588F79B264C0E3700E399AB /* ContentView.swift */; };
+		5588F7A4264C0E3700E399AB /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588F79C264C0E3700E399AB /* TodoList.swift */; };
+		5588F7A5264C0E3700E399AB /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588F79D264C0E3700E399AB /* Persistance.swift */; };
+		5588F7A6264C0E3700E399AB /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588F79E264C0E3700E399AB /* Todo.swift */; };
+		5588F7AF264C10E900E399AB /* Nutri.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5588F7AD264C10E900E399AB /* Nutri.xcdatamodeld */; };
 		559C48E42642A66E0067DD91 /* ConnectJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559C48E32642A66E0067DD91 /* ConnectJSON.swift */; };
 		55CFF2D126398D7500D8F126 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CFF2D026398D7500D8F126 /* NutritionView.swift */; };
 		55EF639B2643A0C600253F70 /* EnterNumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF639A2643A0C600253F70 /* EnterNumView.swift */; };
@@ -23,6 +32,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5588F68D264BDDA700E399AB /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		5588F68E264BDDA700E399AB /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
+		5588F68F264BDDA700E399AB /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		5588F690264BDDA700E399AB /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = ../../../AsyncImage/AsyncImage/ImageLoader.swift; sourceTree = "<group>"; };
+		5588F79B264C0E3700E399AB /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5588F79C264C0E3700E399AB /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
+		5588F79D264C0E3700E399AB /* Persistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
+		5588F79E264C0E3700E399AB /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		5588F7AE264C10E900E399AB /* Nutri.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nutri.xcdatamodel; sourceTree = "<group>"; };
 		559C48E32642A66E0067DD91 /* ConnectJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectJSON.swift; sourceTree = "<group>"; };
 		55CFF2D026398D7500D8F126 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
 		55EF639A2643A0C600253F70 /* EnterNumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumView.swift; sourceTree = "<group>"; };
@@ -51,9 +69,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5588F799264C0E0B00E399AB /* NutriList */ = {
+			isa = PBXGroup;
+			children = (
+				5588F7AD264C10E900E399AB /* Nutri.xcdatamodeld */,
+			);
+			path = NutriList;
+			sourceTree = "<group>";
+		};
 		7404BB6A261E37390091CD8C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5588F799264C0E0B00E399AB /* NutriList */,
+				5588F79B264C0E3700E399AB /* ContentView.swift */,
+				5588F79D264C0E3700E399AB /* Persistance.swift */,
+				5588F79E264C0E3700E399AB /* Todo.swift */,
+				5588F79C264C0E3700E399AB /* TodoList.swift */,
 				7404BB6B261E373D0091CD8C /* BarcodeScanner */,
 			);
 			path = Screens;
@@ -92,6 +123,10 @@
 		7404BB6F261E378A0091CD8C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5588F68F264BDDA700E399AB /* AsyncImage.swift */,
+				5588F68E264BDDA700E399AB /* EnvironmentValues+ImageCache.swift */,
+				5588F68D264BDDA700E399AB /* ImageCache.swift */,
+				5588F690264BDDA700E399AB /* ImageLoader.swift */,
 				74C7EE21261A4253007E153F /* CameraError.swift */,
 				7404BB63261E33600091CD8C /* Alert.swift */,
 			);
@@ -206,16 +241,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				7404BB64261E33600091CD8C /* Alert.swift in Sources */,
+				5588F691264BDDA700E399AB /* ImageCache.swift in Sources */,
+				5588F692264BDDA700E399AB /* EnvironmentValues+ImageCache.swift in Sources */,
+				5588F7AF264C10E900E399AB /* Nutri.xcdatamodeld in Sources */,
 				55EF639B2643A0C600253F70 /* EnterNumView.swift in Sources */,
 				74C7EE10261A394E007E153F /* BarcodeScannerView.swift in Sources */,
+				5588F694264BDDA700E399AB /* ImageLoader.swift in Sources */,
+				5588F7A3264C0E3700E399AB /* ContentView.swift in Sources */,
 				74C7EE1F261A3E01007E153F /* ScannerViewController.swift in Sources */,
+				5588F7A4264C0E3700E399AB /* TodoList.swift in Sources */,
 				74C7EE0E261A394E007E153F /* BarcodeScannerApp.swift in Sources */,
 				74C7EE22261A4253007E153F /* CameraError.swift in Sources */,
 				55EF639F2643A22E00253F70 /* FirstPage.swift in Sources */,
+				5588F693264BDDA700E399AB /* AsyncImage.swift in Sources */,
 				55CFF2D126398D7500D8F126 /* NutritionView.swift in Sources */,
 				7404BB67261E338F0091CD8C /* BarcodeScannerViewModel.swift in Sources */,
+				5588F7A5264C0E3700E399AB /* Persistance.swift in Sources */,
 				559C48E42642A66E0067DD91 /* ConnectJSON.swift in Sources */,
 				74C7EE25261A441A007E153F /* ScannerView.swift in Sources */,
+				5588F7A6264C0E3700E399AB /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +448,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5588F7AD264C10E900E399AB /* Nutri.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5588F7AE264C10E900E399AB /* Nutri.xcdatamodel */,
+			);
+			currentVersion = 5588F7AE264C10E900E399AB /* Nutri.xcdatamodel */;
+			path = Nutri.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 74C7EE02261A394E007E153F /* Project object */;
 }

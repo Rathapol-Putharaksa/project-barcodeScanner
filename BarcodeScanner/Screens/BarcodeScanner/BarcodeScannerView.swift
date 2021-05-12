@@ -7,6 +7,7 @@ struct BarcodeScannerView: View {
     @StateObject var viewModel = BarcodeScannerViewModel()
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var fetch :ConnectJSON
+    @State private var showAddTodoView = false
     
     var body: some View {
         NavigationView {
@@ -25,10 +26,17 @@ struct BarcodeScannerView: View {
                     .frame(height: 60)
                 
                 
-                NavigationLink(destination: NutritionView(scannedCode:viewModel.scannedCode)){
-                                    
-                                        Text("checkNutrition")
-                                    }
+                
+                              
+                Button(action: {showAddTodoView.toggle()
+                    
+                }){
+                    Text("checkNutrition")
+                    
+                }
+                .sheet(isPresented: $showAddTodoView){
+                    NutritionView(scannedCode:viewModel.scannedCode,showAddTodoView: $showAddTodoView)
+                }
                 
               
                    

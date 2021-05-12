@@ -22,6 +22,11 @@ struct FirstPage: View {
                 Image(systemName: "magnifyingglass")
                 Text("Enter 13 Digit")
              }
+            ContentView()
+                .tabItem {
+                    Image(systemName:"list.bullet")
+                    Text("List")
+                }
         }
         .padding(0.0)
     }
@@ -32,6 +37,7 @@ struct FirstPage_Previews: PreviewProvider {
         Group {
             FirstPage()
             FirstPage()
+            
         }
     }
 }

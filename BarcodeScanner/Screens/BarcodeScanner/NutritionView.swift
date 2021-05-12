@@ -3,41 +3,92 @@
 import SwiftUI
 
 struct NutritionView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     var scannedCode: String = ""
-    @State var  reload = 1
     @EnvironmentObject var fetch :ConnectJSON
-    let secondsToDelay = 5.0
     @Environment(\.openURL) var openURL
+    @Binding var showAddTodoView: Bool
+    let posters = [
+        ConnectJSON.imgURL
+    ].map { URL(string: $0)! }
+    @State private var Home = true
+    
+    
     var body: some View {
+        if Home{
+        VStack{
         Text( fetch.loadData(scannedCode: scannedCode))
         VStack{
-            
-            
-            
-            
-            
-            
-            
-            
-            HStack{
+            List(posters, id: \.self) { url in
+                AsyncImage(
+                    url: url,
+                    placeholder: { Text("Loading ...") },
+                    image: { Image(uiImage: $0).resizable() }
+                )
                 
+            }.frame(width: 400, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            
+            
+        }
+            
+            
+            VStack{
+                HStack{
                 Text("Name : ")
                 
                 
                 Text(ConnectJSON.productName).foregroundColor(.red).bold()
-            }
-            Text("")
-            Text("")
-            Text("")
-            HStack{
+                }
+                HStack{
+                
+                
                 Text("NutritionGrade : ")
+                
                 Text(ConnectJSON.nutritionGrade).foregroundColor(.red).bold()
-                Text("                                                       ")
+                }
+                HStack{
+                
+                Text("Energy Per 100g : ")
+                Text(ConnectJSON.energyPer100g).foregroundColor(.red).bold()
+                    Text("kcal")
+                }
+                HStack{
+                
+                Text("Quantity : ")
+                Text(ConnectJSON.quantity).foregroundColor(.red).bold()
+                
+                }
+            }
+    
+        }.padding()
+            Button(action: {
+                showAddTodoView = false
+                
+                let newTodoCD = NutriDB(context: viewContext)
+                newTodoCD.productName = ConnectJSON.productName
+                newTodoCD.nutritionGrade =
+                    ConnectJSON.nutritionGrade
+                newTodoCD.imgURL = ConnectJSON.imgURL
+                newTodoCD.energyPer100g = ConnectJSON.energyPer100g
+                newTodoCD.quantity = ConnectJSON.quantity
+                do {
+                    try viewContext.save()
+                } catch {
+                    let error = error as NSError
+                    fatalError("Unresolved error : \(error)")
+                }
+                Home = false
+            })  {
+                Text("Save")
             }
             
         }
+        else{
+            FirstPage()
+        }
         
     }
-    
 }
+    
+
 

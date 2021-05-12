@@ -5,10 +5,15 @@ import Foundation
 class ConnectJSON: ObservableObject {
     static var productName:String = ""
     static var nutritionGrade:String = ""
+    static var imgURL = "https://www.cdg.co.th/website/wp-content/uploads/2016/06/white-bg.jpg"
+    static var energyPer100g = ""
+    static var quantity = ""
     @Published var item = [Product]()
     
     func loadData(scannedCode:String)-> String {
+        
             let url = URL(string: "https://world.openfoodfacts.org/api/v0/product/"+scannedCode+".json")!
+        
             URLSession.shared.dataTask(with: url) {(data, response, error) in
                 do {
                     
@@ -23,7 +28,9 @@ class ConnectJSON: ObservableObject {
                                         self.item = [decodeData.product]
                                         ConnectJSON.productName = decodeData.product.productName
                                         ConnectJSON.nutritionGrade = decodeData.product.nutriscoreGrade
-                                        
+                                        ConnectJSON.energyPer100g=String(decodeData.product.nutriments.energyKcal100G)
+                                        ConnectJSON.imgURL=decodeData.product.imageURL
+                                        ConnectJSON.quantity=decodeData.product.quantity
                                     }
                                     
                                 } else {
@@ -64,7 +71,7 @@ class ConnectJSON: ObservableObject {
 //
 //   let welcome = try Welcome(json)
 
-import Foundation
+
 
 // MARK: - Welcome
 struct Welcome: Codable {
@@ -122,11 +129,17 @@ extension Welcome {
 
 // MARK: - Product
 struct Product: Codable {
-    let nutriscoreGrade, productName: String
+    let imageURL: String
+    let nutriscoreGrade: String
+    let nutriments: Nutriments
+    let productName, quantity: String
 
     enum CodingKeys: String, CodingKey {
+        case imageURL = "image_url"
         case nutriscoreGrade = "nutriscore_grade"
+        case nutriments
         case productName = "product_name"
+        case quantity
     }
 }
 
@@ -149,12 +162,62 @@ extension Product {
     }
 
     func with(
+        imageURL: String? = nil,
         nutriscoreGrade: String? = nil,
-        productName: String? = nil
+        nutriments: Nutriments? = nil,
+        productName: String? = nil,
+        quantity: String? = nil
     ) -> Product {
         return Product(
+            imageURL: imageURL ?? self.imageURL,
             nutriscoreGrade: nutriscoreGrade ?? self.nutriscoreGrade,
-            productName: productName ?? self.productName
+            nutriments: nutriments ?? self.nutriments,
+            productName: productName ?? self.productName,
+            quantity: quantity ?? self.quantity
+        )
+    }
+
+    func jsonData() throws -> Data {
+        return try newJSONEncoder().encode(self)
+    }
+
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
+}
+
+// MARK: - Nutriments
+struct Nutriments: Codable {
+    let energyKcal100G: Int
+
+    enum CodingKeys: String, CodingKey {
+        case energyKcal100G = "energy-kcal_100g"
+    }
+}
+
+// MARK: Nutriments convenience initializers and mutators
+
+extension Nutriments {
+    init(data: Data) throws {
+        self = try newJSONDecoder().decode(Nutriments.self, from: data)
+    }
+
+    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
+    }
+
+    init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
+    }
+
+    func with(
+        energyKcal100G: Int? = nil
+    ) -> Nutriments {
+        return Nutriments(
+            energyKcal100G: energyKcal100G ?? self.energyKcal100G
         )
     }
 

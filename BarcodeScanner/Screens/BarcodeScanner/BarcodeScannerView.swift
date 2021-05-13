@@ -27,7 +27,7 @@ struct BarcodeScannerView: View {
                 
                 
                 
-                              
+                
                 Button(action: {showAddTodoView.toggle()
                     
                 }){

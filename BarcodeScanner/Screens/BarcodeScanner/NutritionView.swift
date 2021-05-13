@@ -17,7 +17,13 @@ struct NutritionView: View {
     var body: some View {
         if Home{
         VStack{
+            Button(action: {Home = false}, label: {
+                Image(systemName:"chevron.backward")
+                Text("Back")
+            })
+            .padding(.trailing, 300.0)
         Text( fetch.loadData(scannedCode: scannedCode))
+            
         VStack{
             List(posters, id: \.self) { url in
                 AsyncImage(
